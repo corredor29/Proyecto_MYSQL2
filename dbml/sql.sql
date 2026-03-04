@@ -47,14 +47,14 @@ CREATE TABLE ContratoArriendo (
     CanonMensual DECIMAL(12,2) NOT NULL,
     Deposito DECIMAL(12,2) NOT NULL DEFAULT 0,
     DiaPago TINYINT NOT NULL,
-    FOREIGN KEY (ID_Contrato) REFERENCES Contrato(ID_Contrato)
+    FOREIGN KEY (ID_Contrato) REFERENCES Contratos(ID_Contrato)
 );
 
 CREATE TABLE ContratoVenta (
     ID_Contrato INT PRIMARY KEY,
     PrecioVenta DECIMAL(12,2) NOT NULL,
     FechaCierre DATE NULL,
-    FOREIGN KEY (ID_Contrato) REFERENCES Contrato(ID_Contrato)
+    FOREIGN KEY (ID_Contrato) REFERENCES Contratos(ID_Contrato)
 );
 CREATE TABLE Pagos (
     ID_Pago INT AUTO_INCREMENT PRIMARY KEY,
@@ -63,7 +63,7 @@ CREATE TABLE Pagos (
     Valor DECIMAL(12,2) NOT NULL,
     Concepto ENUM('ARRIENDO','DEPOSITO','CUOTA_VENTA','ABONO','OTRO') NOT NULL DEFAULT 'OTRO',
     EstadoPago ENUM('APLICADO','ANULADO') NOT NULL DEFAULT 'APLICADO',
-    FOREIGN KEY (ID_Contrato) REFERENCES Contrato(ID_Contrato)
+    FOREIGN KEY (ID_Contrato) REFERENCES Contratos(ID_Contrato)
 );
 CREATE TABLE LogSistema (
     ID_Log INT AUTO_INCREMENT PRIMARY KEY,
